@@ -1,0 +1,39 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <interactiveMode>false</interactiveMode>
+  <localRepository>/root/.m2/repository</localRepository>
+  <servers>
+    <server>
+      <id>ossrh</id>
+      <username>${env.bamboo_OSS_SONATYPE_USERNAME}</username>
+      <password>${env.bamboo_OSS_SONATYPE_INFO}</password>
+    </server>
+  </servers>
+  <profiles>
+    <profile>
+        <id>cicdbuild</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+            <gpg.keyname>${env.bamboo_NIMBUS_PARENT_GPG_KEYNAME}</gpg.keyname>
+            <gpg.passphrase>${env.bamboo_NIMBUS_PARENT_GPG_INFO}</gpg.passphrase>
+        </properties>
+        <repositories>
+            <repository>
+                <id>Maven Central</id>
+                <url>http://central.maven.org/maven2</url>
+            </repository>
+            <repository>
+                <id>OSSRH staging</id>
+                <url>https://oss.sonatype.org/content/repositories/staging</url>
+            </repository>
+            <repository>
+                <id>OSSRH snapshots</id>
+                <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            </repository>
+        </repositories>
+    </profile>
+  </profiles>
+</settings>
