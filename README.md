@@ -2,14 +2,15 @@
 This image is used in Bamboo to build, test, sign, and deploy [Nimbus Core](https://github.com/openanthem/nimbus-core). The settings file `settings-docker.xml` is included for that purpose.
 
 The following applications are included to support the build, test, signature, and deployment processes:
-* Java 1.8
-* Maven 3.5
-* GNUPG
-* git
-* curl
+* OpenJDK 1.8.191
+* Maven 3.5.2
+* GNUPG 2.2.4
+* Git 2.17.1
+* curl 7.58.0
+* xpath 1.42.1
 * NodeJS 8.15
 * NPM 6.4.1
-* Chrome/Chromium 71
+* Chromium 71.0.3578
 
 ## Getting started
 
