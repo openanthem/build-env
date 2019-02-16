@@ -7,7 +7,7 @@ LABEL maintainer="Anthem OSS <anthemopensource@webteks.com>" \
     org.label-schema.url="https://hub.docker.com/r/antheminc/build-env" \
     org.label-schema.vcs-url="https://github.com/openanthem/build-env" \
     org.label-schema.version="1.0.0" \
-    org.label-schema.build-date="2019-02-15T21:54:07-05:00" \
+    org.label-schema.build-date="2019-02-16T12:38:35-05:00" \
     org.label-schema.schema-version="1.0"
 
 COPY mvn-entrypoint.sh /usr/local/bin/mvn-entrypoint.sh
@@ -23,10 +23,11 @@ ENV BUILD_ENV=1.0.0 \
     PATH=$PATH:/usr/lib/jvm/java-8-openjdk-amd64/bin:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin
 
 RUN TINI_V="v0.18.0" && TINI_DL="https://github.com/krallin/tini/releases/download" \
-    && apt-get -q update && apt-get install --no-install-recommends -y gnupg \
+    && apt-get -q update && apt-get install --no-install-recommends -y gnupg1 \
     && cat /usr/local/setup_8.x | bash - && apt-get install -y nodejs \
     && curl -sL -o /tini ${TINI_DL}/${TINI_V}/tini && chmod +x /tini \
     && apt-get install --no-install-recommends -y git openjdk-8-jdk maven chromium-browser \
+    && ln -s "/usr/bin/gpg1" "/usr/bin/gpg" \
     && chmod +x /usr/local/bin/mvn-entrypoint.sh \
     && rm -rf /usr/local/setup_8.x && rm -rf /var/lib/apt/lists/*
 
