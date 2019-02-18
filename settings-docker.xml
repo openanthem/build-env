@@ -16,10 +16,6 @@
         <activation>
             <activeByDefault>true</activeByDefault>
         </activation>
-        <properties>
-            <gpg.keyname>${env.bamboo_NIMBUS_PARENT_GPG_KEYNAME}</gpg.keyname>
-            <gpg.passphrase>${env.bamboo_NIMBUS_PARENT_GPG_INFO}</gpg.passphrase>
-        </properties>
         <repositories>
             <repository>
                 <id>Maven Central</id>
